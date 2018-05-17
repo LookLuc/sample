@@ -26,4 +26,10 @@ class User extends Authenticatable//Authenticatable 是授权相关功能的引�
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function gravatar($size = '100')
+    {
+        $hash = md5(strtolower(trim($this->attributes['email'])));
+        return "http://www.gravatar.com/avatar/$hash?s=$size";
+    }
 }
